@@ -5,7 +5,7 @@ from .views import *
 urlpatterns = [
     # Your other views and paths go here
     path('', Register, name='register'),
-    path('login/', Login, name='login'),
+    #path('login/', Login, name='login'),
     # Example: Include Django authentication URLs
     path('login/', LoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),

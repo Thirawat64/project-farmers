@@ -31,7 +31,7 @@ body{
 .blurred-box{
     position: fixed;
     width: 250px;
-    height: 350px;
+    height: 550px;
     top: calc(50% - 175px);
     left: calc(50% - 125px);
     background:inherit ;
@@ -42,7 +42,7 @@ body{
 .blurred-box::after{
     content: '';
     width: 300px;
-    height: 300px;
+    height: 450px;
     background: inherit;
     position: absolute;
     left: -20px;
@@ -103,6 +103,9 @@ body{
     margin: 0 auto;
     outline: none;
 }
+.form-field{
+    margin-top: 0.5rem;
+}
 
 
 
@@ -113,18 +116,39 @@ body{
     <div class="blurred-box">
 
         <div class="user-register-box">
-            <form method="POST" action="{% url 'register' %}">
-                {% csrf_token %}  
-                
-                
-            </form><br>
             <span class="user-icon"></span>
             <div class="user-name">สมัครสมาชิก</div>
-            <input class="pDzPRp" type="text" placeholder="หมายเลขโทรศัพท์ / Email" autocomplete="on" name="loginKey" maxlength="128" aria-invalid="false" value="" fdprocessedid="2gbh4a">
-            <input type="text" class="user-name" placeholder="ชื่อ">
-            <input type="password" class="user-password" placeholder="รหัสผ่าน">
-            <input type="password" class="user-password" placeholder="ยืนยันรหัสผ่าน">
-            <button type="submit">สมัครสมาชิก</button>
+            <form action="{% url 'register' %}" method="POST">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+                <div class="form-field">
+                  {{ form.username.label_tag }}
+                  {{ form.username }}
+                  {{ form.username.errors }}
+                </div>
+                <div class="form-field">
+                  {{ form.email.label_tag }}
+                  {{ form.email }}
+                  {{ form.email.errors }}
+                </div>
+                <div class="form-field">
+                  {{ form.password1.label_tag }}
+                  {{ form.password1 }}
+                  {{ form.password1.errors }}
+                </div>
+                <div class="form-field">
+                  {{ form.password2.label_tag }}
+                  {{ form.password2 }}
+                  {{ form.password2.errors }}
+                </div><br>
+                <div class="form-field">
+                  <button class="button button-primary" type="submit">สมัครสมาชิก</button>
+                </div><br>
+                <p>
+                  <a href="{% url 'login' %}">เข้าสู่ระบบ</a>
+                </p>
+              </form>
+            
         </div>
 
     </div>
