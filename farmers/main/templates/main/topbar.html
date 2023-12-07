@@ -1,0 +1,57 @@
+
+{% load static %}
+
+<style>
+    .navbar{
+        
+        display: flex;
+        height: 10%;
+        background-color:075650;
+    }
+    .user-logo,img{
+    width: 60px;
+    height: 60px;
+    margin-top: 0.3rem;
+    margin-left: 0.8rem;
+    border-radius: 50px;
+    background-size: contain;
+    
+    }
+
+
+    
+    .menu{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: right;
+        list-style: none;
+        float: right;
+        color: black;
+        padding-right: 1cm;
+    }
+  
+    .menu li{
+        margin: 0 1rem;
+    }
+  
+    .menu li a{
+        color: white;
+        
+    }
+  
+   
+  </style>
+
+<section class="navbar">
+    <div class="user-logo">
+        <a href="{% url 'home' %}"> <img src="/static/image/logo.jpg" width="20px" height="20px"  alt=""></a>
+    </div>
+    <ul class="menu">
+      <li class="nav-item"><a href="{% url 'home' %}" class="nav-link">หน้าแรก</a></li>
+      <li class="nav-item"><a href="{% url 'help' %}" class="nav-link active" aria-current="page">ช่วยเหลือ</a></li>
+      <li class="nav-item"><a href="{% url 'login' %}" class="nav-link">เข้าสู่ระบบ</a></li>
+      <li class="nav-item"><a href="{% url 'register' %}" class="nav-link">สมัครสมาชิก</a></li>
+      <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">เกี่ยวกับ</a></li>
+    </ul>
+</section> <br>

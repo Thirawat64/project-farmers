@@ -1,0 +1,57 @@
+{% extends 'main/base.html' %}
+
+
+{% block content %} 
+
+<style>
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.logo{
+    display: flex;
+    justify-content: center;
+    margin-top: 150px;
+    
+}
+
+.version{
+    display: flex;
+    justify-content: center;
+}
+
+.cache{
+    display: flex;
+    justify-content: center;
+    margin-top: 150;
+}
+
+.content{
+    border: 1px solid green;
+    width: 30%;
+    height: 70%;
+    margin: auto;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    background-color: gainsboro;
+}
+</style>
+
+
+<div class="content">
+    <div class="logo">
+        <img src="/static/image/logo.jpg" width="20%" height="50%">
+    </div>
+    <div class="version">
+        <p>v1.0.0.0.0.1</p>
+    </div>
+    
+    <div class="cache">
+        <input type="button" style="width: 100px; height: 50;" value="เคลียร์ Cache">
+    </div>    
+</div>
+{% endblock %} 

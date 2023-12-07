@@ -1,0 +1,73 @@
+{% extends 'main/base.html' %}
+
+{% block content %} 
+
+<style>
+   *{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    background: #D9D9D9;
+    width: 50%;
+    height: 70%;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.location,.time{
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 1%;
+    margin-left: 30%;
+    margin-top: 4rem;
+    width: 30%;
+    border-radius: 5%;
+    
+}
+
+.search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.location{
+    display: flex;
+}
+.location label{ 
+    width: 900px;
+
+}
+.location input{
+    
+    width: 500px;
+}
+</style>
+
+<div class="container">
+    <div class="location">
+        <label for="time">สถานที่ใช้งาน:</label>
+        <input type="text" class="location" placeholder="กรอกที่อยู่">
+    </div>
+    <div class="time">
+        <label for="time">วันที่ใช้งาน:</label>
+        <input type="date" id="birthday" name="birthday">
+    </div>
+    <div class="search">
+        <button type="submit">ค้นหา</button>
+    </div>
+    
+</div>
+
+
+
+{% endblock %} 

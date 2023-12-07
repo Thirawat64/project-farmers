@@ -1,0 +1,36 @@
+{% extends 'main/base.html' %}
+
+
+{% block content %} 
+<style>
+    *{
+    margin: 0;
+    padding: 0;
+}
+
+.content{
+    border: 1px solid green;
+    width: 30%;
+    height: 70%;
+    margin: auto;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    background-color: gainsboro;
+}
+
+.content-us{
+     margin-top: 4px;
+}
+</style>
+
+<div class="content">
+    <div class="help">
+        <input type="button" style="width: 200px; height: 50;" value="ศูนย์ช่วยเหลือ">
+    </div>
+    <div class="contact-us">
+        <input type="button" style="width: 200px; height: 50;" value="ติดต่อเรา">
+    </div>
+</div>
+{% endblock %} 
