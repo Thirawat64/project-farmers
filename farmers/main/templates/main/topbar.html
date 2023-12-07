@@ -50,8 +50,12 @@
     <ul class="menu">
       <li class="nav-item"><a href="{% url 'home' %}" class="nav-link">หน้าแรก</a></li>
       <li class="nav-item"><a href="{% url 'help' %}" class="nav-link active" aria-current="page">ช่วยเหลือ</a></li>
-      <li class="nav-item"><a href="{% url 'login' %}" class="nav-link">เข้าสู่ระบบ</a></li>
-      <li class="nav-item"><a href="{% url 'register' %}" class="nav-link">สมัครสมาชิก</a></li>
+      {% if user.is_authenticated %}
+        <li class="nav-item"><a href="#" class="nav-link">{{ user.username }}</a></li>
+      {% else %}
+        <li class="nav-item"><a href="{% url 'login' %}" class="nav-link">เข้าสู่ระบบ</a></li>
+        <li class="nav-item"><a href="{% url 'register' %}" class="nav-link">สมัครสมาชิก</a></li>
+      {% endif %}
       <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">เกี่ยวกับ</a></li>
     </ul>
 </section> <br>
