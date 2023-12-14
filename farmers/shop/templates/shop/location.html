@@ -25,7 +25,6 @@
     align-items: center;
     justify-content: center;
     padding: 10px;
-    border-radius: 1%;
     margin-left: 30%;
     margin-top: 4rem;
     width: 30%;
@@ -37,7 +36,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
+}
+
+button{
+    width: 100px;
 }
 
 .location{
@@ -47,23 +49,36 @@
     width: 900px;
 
 }
-.location input{
-    
-    width: 500px;
+
+form{
+    display: flex;
+    justify-content: center;
+    width: 80px;
+}
+
+button{
+    background-color: 075650;
+    width: 179px;
+    height: 40px;
+    color: white;
 }
 </style>
 
 <div class="container">
     <div class="location">
         <label for="time">สถานที่ใช้งาน:</label>
-        <input type="text" class="location" placeholder="กรอกที่อยู่">
+        <form action="{% url 'search' %}" method="get">
+            <input type="search" name="search">
+        </form>
     </div>
     <div class="time">
         <label for="time">วันที่ใช้งาน:</label>
         <input type="date" id="birthday" name="birthday">
     </div>
     <div class="search">
-        <button type="submit">ค้นหา</button>
+        <form action="{% url 'advice' %}">
+            <button type="submit">ค้นหา</button>
+        </form>
     </div>
     
 </div>

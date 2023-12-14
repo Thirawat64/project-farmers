@@ -1,0 +1,65 @@
+{% extends 'main/base.html' %}
+
+{% block content %} 
+
+<style>
+    *{
+    margin: 0;
+    padding: 0;
+}
+.advice{
+    background: #D9D9D9;
+    width: 50%;
+    height: 60%;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    margin-top: 50px;
+}
+.text{
+    display: block;
+    margin: 0 2rem;
+    color: red;
+}
+
+
+.submit{
+    
+    margin: 4rem 0;
+    display: flex;
+    justify-content: center;
+}
+button{
+    background-color: 075650;
+    width: 179px;
+    height: 40px;
+    color: white;
+}
+</style>
+
+
+<div class="advice">
+    <div class="text">
+        <h4>* คำแนะนำและข้อควรระวังในการเช่าและปล่อยเช่าอุปกรณ์การเกษตร  
+
+            ก่อนทำการเช่าหรือปล่อยเช่าอุปกรณ์ทุกครั้ง 
+                 ควรถ่ายบัตรประชาชนของ ผู้เช่า และ ผู้ปล่อยเช่า 
+            ถ่ายรูปภาพติดใบหน้าพร้อมอุปกรณ์ทั้ง ผู้เช่า และ ผู้ปล่อยเช่า 
+                 เพื่อจะใช้เป็นหลักฐานยืนยันว่าได้ทำการเช่ากันจริง
+                 
+            เว็ปนี้เป็นเพียงเครื่องมืออำนวยความสะดวกให้เกษตรกร
+            ในการแสดงอุปกรณ์สำหรับผู้เช่า และ ผู้ปล่อยเช่า ไม่มีส่วนได้
+            ส่วนเสีย เรียกเก็บเงิน และการเรียกรับผลประโยชน์จากเกษตรกร
+            ในการเช่า ดังนั้น ทางเราขอไม่รับผิดชอบต่อความเสียหายใดๆที่เกิดขึ้นทุกกรณี</h4>
+    </div>
+
+</div>
+<div class="submit">
+    <form action="{% url 'show_product' %}">
+        <button type="submit">ยอมรับ</button>
+    </form>
+</div>
+
+
+{% endblock %} 

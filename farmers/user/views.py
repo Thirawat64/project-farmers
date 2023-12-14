@@ -17,6 +17,7 @@ def Register(req:HttpRequest):
          
     context = {"form": form}
     return render(req, 'users/register.html',context)
+#password non12345678
 
 def Login(req):
     return render(req, 'registration/login.html')
