@@ -1,8 +1,11 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render,redirect
 from .models import *
 from .forms import *
 
 # Create your views here.
+
+@login_required
 def Location(req):
     return render(req, 'shop/location.html')
 
@@ -28,7 +31,7 @@ def product(req):
     comtext = {'allproduct':allproduct}
     return render(req, 'shop/show_product.html',comtext)
 
-def delete_view(req,id):
+#def delete_view(req,id):
     s = AllProduct.objects.get(pk=id)
     s.delete()
     return redirect('delete_view')

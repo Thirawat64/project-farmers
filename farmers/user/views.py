@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from audioop import reverse
 from django.contrib.auth import login
 from django.shortcuts import render
@@ -11,7 +12,10 @@ def Register(req:HttpRequest):
         if form.is_valid():
             user = form.save()
             login(req,user)
-            return HttpResponseRedirect(reverse("registration/login"))
+            
+            return HttpResponseRedirect(reverse('home'))
+
+        
     else:
         form = RegisterForm()
          
@@ -21,3 +25,7 @@ def Register(req:HttpRequest):
 
 def Login(req):
     return render(req, 'registration/login.html')
+
+@login_required
+def dashboard(req):
+    return render(req, 'users/dashboard.html')
