@@ -11,7 +11,7 @@ def Register(req:HttpRequest):
         if form.is_valid():
             user = form.save()
             login(req,user)
-            return HttpResponseRedirect(reverse("main:home"))
+            return HttpResponseRedirect(reverse("registration/login"))
     else:
         form = RegisterForm()
          
