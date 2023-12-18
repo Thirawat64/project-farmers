@@ -15,21 +15,28 @@ def searches(request):
         form = Search1(request.GET)
         if form.is_valid():
             search = form.cleaned_data['search']
-            result = Course.objects.filter(name__icontains=search)
+            show_product = Course.objects.filter(name__icontains=search)
         else:
-            result = []
+            show_product = []
     else:
         form = Search1()
-        result = []
-    return render(request,'location.html',{'result':result,'form':form})
+        show_product = []
+    return render(request,'show_product.html',{'show_product':show_product,'form':form})
 
 def advice_view(req):
     return render(req, 'shop/advice.html')
 
 def product(req):
     allproduct = AllProduct.objects.all()
-    comtext = {'allproduct':allproduct}
-    return render(req, 'shop/show_product.html',comtext)
+    context = {'allproduct':allproduct}
+    return render(req, 'shop/show_product.html',context)
+
+def Showdetall_product(req,allproduct_id):
+    one_product = AllProduct.objects.get(id=allproduct_id)
+    context = {'product':one_product}
+    return render(req, 'shop/showdetall_product.html',context)
+    
+
 
 #def delete_view(req,id):
     s = AllProduct.objects.get(pk=id)

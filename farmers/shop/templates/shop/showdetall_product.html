@@ -47,23 +47,11 @@ a{
 }
 </style>
 
-<div class='menusearch'>
-    <form action='/search' class='searchform' method='get'>
-        <input class='searchfield' id='q' name='q' onblur='if(this.value==&apos;&apos;)this.value=this.defaultValue;' onfocus='if(this.value==this.defaultValue)this.value=&apos;&apos;' type='text' value='ค้นหาอุปกรณ์'/>
-        <input class='searchbutton' src='https://1.bp.blogspot.com/-N_4TWVUmXv4/UDdKJf5NwCI/AAAAAAAAIgY/AGrKXgwkrTo/s1600/tombolcari.gif' style='cursor:pointer;vertical-align:top' type='image' value='Go'/>
-    </form>
-</div>
-
-<div class="container">
-    <div class="content_type">
-        <h4>ค้นหาตามหมวดหมู่</h4>
-    </div> 
-    
 
     {% for i in allproduct %}
     <div class="shop_product">
     
-        <h3>ชื่อ: <a href="{% url 'Showdetall_product' i.allproduct_id%}">{{i.product_name}} </a></h3>
+        <h3>ชื่อ: {{i.product_name}} </h3>
         <p>ราคา: {{i.product_price}} </p>
         {% if i.product_detail %}
             <p>รายละเอียด: {{i.product_detail}}</p>
