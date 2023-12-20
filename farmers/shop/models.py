@@ -25,9 +25,10 @@ class AllProduct(models.Model):
     product_price = models.DecimalField(max_digits=6, decimal_places=2)
     product_detail = models.TextField(default='No description')
     product_size = models.CharField(max_length=200, default='Default Size')
-    """ product_status = models.ForeignKey(Status, on_delete=models.CASCADE, default=" ", blank=True) """
+    # product_status = models.ForeignKey(Status, on_delete=models.CASCADE, default=" ", blank=True)
     product_statustype = models.CharField(max_length=200, choices = STATUSTYPE, default=" ")
     product_location = models.CharField(max_length=200, default='location')
+    image = models.ImageField(upload_to='Parcel', blank=True, null=True, default='broken_image.png')
 
     def __str__(self) -> str:
         return f'Product {self.product_name}'

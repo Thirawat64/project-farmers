@@ -31,21 +31,23 @@ def product(req):
     context = {'allproduct':allproduct}
     return render(req, 'shop/show_product.html',context)
 
-""" def Showdetall_product(req,id):
-    one_product = AllProduct.objects.filter(id=id)
+def Showdetall_product(req,product_id):
+    one_product = AllProduct.objects.filter(id=product_id)
     context = {'product':one_product}
-    return render(req, 'shop/showdetall_product.html',context) """
-
-def Showdetall_product(request, product_id):
-    allProduct_instance = get_object_or_404(AllProduct, id=product_id)
-    return render(request, 'shop/Showdetall_product.html', {'AllProduct': allProduct_instance})
-    
-
-""" 
-def delete_view(req,id):
-    s = AllProduct.objects.get(pk=id)
-    s.delete()
-    return redirect('delete_view') """
+    return render(req, 'shop/showdetall_product.html',context)
 
 def Sell_product(req):
     return render(req, 'shop/sell_product.html')
+
+
+# def Showdetall_product(request, product_id):
+#     allProduct_instance = get_object_or_404(AllProduct, id=product_id)
+#     return render(request, 'shop/Showdetall_product.html', {'AllProduct': allProduct_instance})
+    
+
+
+# def delete_view(req,id):
+#     s = AllProduct.objects.get(pk=id)
+#     s.delete()
+#     return redirect('delete_view')
+
