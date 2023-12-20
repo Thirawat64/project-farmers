@@ -11,3 +11,6 @@ def About(req):
 
 def Help(req):
     return render(req, 'main/help.html')
+
+def contact(req):
+    return render(req, 'main/detall_contact.html')

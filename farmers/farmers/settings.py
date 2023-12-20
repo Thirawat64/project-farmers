@@ -81,7 +81,7 @@ WSGI_APPLICATION = "farmers.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'project_farmers',
+        'NAME': 'farmers_support',
         'USER': 'root',
         'PASSWORD': 'thirawat050645**',
         'HOST': '127.0.0.1',

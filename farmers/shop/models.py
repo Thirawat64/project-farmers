@@ -1,28 +1,33 @@
 from django.db import models
 
+
+STATUSTYPE = (
+        ('พร้อมเช่า', 'พร้อมเช่า'),
+        ('ไม่พร้อมเช่า', 'ไม่พร้อมเช่า'),
+    )
+
 class Course(models.Model):
-    
     name = models.CharField(max_length=300)
-    
 
     def __str__(self) -> str:
-        return f' {self.name} '
+        return f'{self.name}'
     
+class Status(models.Model):
+    name_Status = models.CharField(max_length=100, default="", blank=True)
+
+    def __str__(self):
+        return f'{self.name_Status}'
+           
+
 class AllProduct(models.Model):
-    
+    id = models.AutoField(primary_key=True)
     product_name = models.CharField(max_length=200)
-    product_price = models.IntegerField(primary_key=True, max_length=10)
+    product_price = models.DecimalField(max_digits=6, decimal_places=2)
     product_detail = models.TextField(default='No description')
-    product_size = models.CharField(max_length=200,default='Default Size')
-    product_status = models.CharField(max_length=200,default='Default status')
-    product_location = models.CharField(max_length= 200,default ='location')
-    img = models.ImageField(upload_to='product_images',null=True,blank=True)
-    
+    product_size = models.CharField(max_length=200, default='Default Size')
+    """ product_status = models.ForeignKey(Status, on_delete=models.CASCADE, default=" ", blank=True) """
+    product_statustype = models.CharField(max_length=200, choices = STATUSTYPE, default=" ")
+    product_location = models.CharField(max_length=200, default='location')
+
     def __str__(self) -> str:
-        return f' {self.product_name} '
-
-
-
-
-
-    
+        return f'Product {self.product_name}'

@@ -4,80 +4,136 @@
 {% block content %}
 
 <style>
-    *{
+    * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
     }
 
-.menusearch{
-    display: flex;
-    justify-content: center;
-}
-.searchfield{
-    width: 500px;
-    height: 30px;
-}
-.content_type{
-    width: 20%;
-    background-color: D9D9D9;
-    
-    
-    
-}
+    .menusearch {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
 
-h4{
-    margin-top: 1rem;
-}
+    .searchfield {
+        width: 500px;
+        height: 30px;
+    }
 
-.shop_product{
-    border: 1px solid red;
-    width: 80%;
-}
-
-.container{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    margin-top: 1rem;
-}
-
-a{
-    text-decoration: none;
-}
-</style>
-
-<div class='menusearch'>
-    <form action='/search' class='searchform' method='get'>
-        <input class='searchfield' id='q' name='q' onblur='if(this.value==&apos;&apos;)this.value=this.defaultValue;' onfocus='if(this.value==this.defaultValue)this.value=&apos;&apos;' type='text' value='ค้นหาอุปกรณ์'/>
-        <input class='searchbutton' src='https://1.bp.blogspot.com/-N_4TWVUmXv4/UDdKJf5NwCI/AAAAAAAAIgY/AGrKXgwkrTo/s1600/tombolcari.gif' style='cursor:pointer;vertical-align:top' type='image' value='Go'/>
-    </form>
-</div>
-
-<div class="container">
-    <div class="content_type">
-        <h4>ค้นหาตามหมวดหมู่</h4>
-    </div> 
-    
-
-    {% for i in allproduct %}
-    <div class="shop_product">
-    
-        <h3>ชื่อ: <a href="{% url 'Showdetall_product' i.allproduct_id%}">{{i.product_name}} </a></h3>
-        <p>ราคา: {{i.product_price}} </p>
-        {% if i.product_detail %}
-            <p>รายละเอียด: {{i.product_detail}}</p>
-        {% endif %}
-        <p>ขนาด: {{i.product_size}}</p>
-        <p>สถานะอุปกรณ์: {{i.product_status}}</p>
-        <p>ที่อยู่อุปกรณ์: {{i.product_location}}</p>
-        {% for image in item.images.all %}
-        <img class="product-image{% if forloop.first %} active{% endif %}" src="{{ image.image.url }}" alt="{{ item.title }} Image" >
-        {% endfor %}
+    .content_type {
+        width: 200px;
+        height: 600px;
+        overflow: hidden;
+        background-color: D9D9D9;
+        display: flex;
+        justify-content: center;
         
 
-    </div>
-    {% endfor %}
-</div>
 
-{% endblock %} 
+    }
+
+    h4 {
+        margin-top: 1rem;
+    }
+
+    .shop_product {
+        
+        width: 220px;
+        height: 150px;
+        background-color: D9D9D9;
+        padding: 10px;
+        margin: 0 1rem ;
+        display: grid;
+        grid-template-columns: 4 ;
+        
+    }
+
+    .container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        margin-top: 1rem;
+
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .content {
+        width: 100%;
+        height: 78%;
+        
+
+    }
+
+    .sell_product{
+        
+        margin-left: 80rem;
+        margin-top: -3rem;
+        
+    }
+
+    .sell_product,button{
+        width: 110px;
+        height: 40px;
+        background-color: 075650;
+        color: white;
+    }
+    p{
+        font-size: small;
+    }
+</style>
+
+
+<div class="content">
+    <div class='menusearch'>
+        <form action='/search' class='searchform' method='get'>
+            <input class='searchfield' id='q' name='q'
+                onblur='if(this.value==&apos;&apos;)this.value=this.defaultValue;'
+                onfocus='if(this.value==this.defaultValue)this.value=&apos;&apos;' type='text' value='ค้นหาอุปกรณ์' />
+            <input class='searchbutton'
+                src='https://1.bp.blogspot.com/-N_4TWVUmXv4/UDdKJf5NwCI/AAAAAAAAIgY/AGrKXgwkrTo/s1600/tombolcari.gif'
+                style='cursor:pointer;vertical-align:top' type='image' value='Go' />
+        </form>
+    </div>
+
+    <div class="container">
+        <div class="content_type">
+            <h4>ค้นหาตามหมวดหมู่</h4>
+        </div>
+
+
+        {% for i in allproduct %}
+        <div class="shop_product">
+
+            {% if i.id %}
+            <h3>ชื่อ: <a href="{% url 'Showdetall_product' i.id %}">{{ i.product_name }} </a></h3>
+            {% else %}
+            <p>ชื่อ: No ID available for this product</p>
+            {% endif %}
+
+            <p>ราคา: {{i.product_price}} </p>
+            {% if i.product_detail %}
+            <p>รายละเอียด: {{i.product_detail}}</p>
+            {% endif %}
+            <p>ขนาด: {{i.product_size}}</p>
+            <p>สถานะอุปกรณ์: {{i.product_statustype}}</p>
+
+            {% for image in item.images.all %}
+            <img class="product-image{% if forloop.first %} active{% endif %}" src="{{ image.image.url }}"
+                alt="{{ item.title }} Image">
+            {% endfor %}
+
+            
+        </div>
+        {% endfor %}
+    </div>
+    <div class="sell_product">
+        <form action="{% url 'sell_product' %}">
+            <button  type="submit">ปล่อยเช่าอุปกรณ์</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

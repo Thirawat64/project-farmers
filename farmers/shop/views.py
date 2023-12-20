@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render,redirect
+from django.shortcuts import get_object_or_404,render,redirect
 from .models import *
 from .forms import *
 
@@ -31,14 +31,21 @@ def product(req):
     context = {'allproduct':allproduct}
     return render(req, 'shop/show_product.html',context)
 
-def Showdetall_product(req,allproduct_id):
-    one_product = AllProduct.objects.get(id=allproduct_id)
+""" def Showdetall_product(req,id):
+    one_product = AllProduct.objects.filter(id=id)
     context = {'product':one_product}
-    return render(req, 'shop/showdetall_product.html',context)
+    return render(req, 'shop/showdetall_product.html',context) """
+
+def Showdetall_product(request, product_id):
+    allProduct_instance = get_object_or_404(AllProduct, id=product_id)
+    return render(request, 'shop/Showdetall_product.html', {'AllProduct': allProduct_instance})
     
 
-
-#def delete_view(req,id):
+""" 
+def delete_view(req,id):
     s = AllProduct.objects.get(pk=id)
     s.delete()
-    return redirect('delete_view')
+    return redirect('delete_view') """
+
+def Sell_product(req):
+    return render(req, 'shop/sell_product.html')
