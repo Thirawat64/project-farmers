@@ -16,10 +16,52 @@
     }
 
     .shop_product{
-        border: 1px solid green;
-        width: 50%;
-        height: 50%;
+        
+        width: 100%;
+        height: 80%;
     }
+
+    .img{
+        padding: 3rem;
+        width: 50px;
+        height: 50px;
+    }
+
+    .detall{
+        padding: 1rem;
+        width: 800px;
+        height: 200px;
+        margin-left: auto;
+        background-color: D9D9D9;
+    }
+    .location{
+        padding: 1rem;
+        margin-left: 45rem;
+    }
+    .status{
+        padding: 1rem;
+        margin-left: 45rem;
+    }
+    .price{
+        padding: 1rem;
+        /* border: 1px solid red; */
+        margin-left: 45rem;
+        font-size: larger;
+    }
+    .button_sell {
+
+        margin-left: 80rem;
+        margin-top: -3rem;
+
+    }
+    .button_sell,
+    button {
+        width: 110px;
+        height: 40px;
+        background-color: 075650;
+        color: white;
+    }
+
 </style>
 
 
@@ -28,35 +70,46 @@
     <div class="container">
 
         <h3>แสดงรายละเอียดอุปกรณ์</h3>
-        {% for i in allproduct %}
+        {% for i in product %}
 
-        <div class="shop_product" style="width: 100%; height: 100%; border: 1px solid saddlebrown;">
+        <div class="shop_product" >
 
-            <div class="img" style=" border: 1px solid green; width: 50px; height: 50px;">
+            <div class="img" >
                 <img class="image{% if forloop.first %} active{% endif %}" src="{{ image.image.url }}" alt=" Image">
             </div>
 
-            <div class="detall" style=" border: 1px solid blue; width:50px;">
+            <div class="detall" >
                 <h3>ชื่อ: {{ i.product_name }} </a></h3>
                 <p>ขนาดอุปกรณ์: {{ i.product_size }}</p>
                 <p>รายละเอียดอุปกรณ์: {{ i.product_detail }}</p>
             </div>
 
-            <div class="price">
-                <p>ราคา: {{i.product_price}} </p>
+            <div class="location">
+                <h3 >ที่อยู่อุปกรณ์</h3>
+                <p> {{i.product_location}} เบอร์: {{i.phon_number}}</p>
+                
             </div>
-
+            
             <div class="status">
                 <p>สถานะอุปกรณ์: {{i.product_statustype}}</p>
             </div>
 
-            <div class="location">
-                <p>ที่อยู่อุปกรณ์: {{i.product_location}}</p>
+            <div class="price">
+                
+                <p>ราคา: {{i.product_price}} บาท </p>
             </div>
+
+            
 
             
         </div>
         {% endfor %}
+
+        <div class="button_sell">
+            <form action="{% url 'basket' %}">
+                <button type="submit">เช่าอุปกรณ์</button>
+            </form>
+        </div>
     </div>
     <!-- <div class="sell_product">
         <form action="{% url 'sell_product' %}">

@@ -5,7 +5,7 @@ from .forms import *
 
 # Create your views here.
 
-@login_required
+
 def Location(req):
     return render(req, 'shop/location.html')
 
@@ -26,11 +26,13 @@ def searches(request):
 def advice_view(req):
     return render(req, 'shop/advice.html')
 
+
 def product(req):
     allproduct = AllProduct.objects.all()
     context = {'allproduct':allproduct}
     return render(req, 'shop/show_product.html',context)
 
+@login_required
 def Showdetall_product(req,product_id):
     one_product = AllProduct.objects.filter(id=product_id)
     context = {'product':one_product}
@@ -39,7 +41,8 @@ def Showdetall_product(req,product_id):
 def Sell_product(req):
     return render(req, 'shop/sell_product.html')
 
-
+def Basket(req):
+    return render(req, 'shop/basket.html')
 # def Showdetall_product(request, product_id):
 #     allProduct_instance = get_object_or_404(AllProduct, id=product_id)
 #     return render(request, 'shop/Showdetall_product.html', {'AllProduct': allProduct_instance})

@@ -86,22 +86,30 @@
     p {
         font-size: small;
     }
-    .detall{
+
+    .detall {
         padding: 2rem 0;
     }
 </style>
 
 
 <div class="content">
-    <div class='menusearch'>
-        <form action='/search' class='searchform' method='get'>
-            <input class='searchfield' id='q' name='q'
-                onblur='if(this.value==&apos;&apos;)this.value=this.defaultValue;'
-                onfocus='if(this.value==this.defaultValue)this.value=&apos;&apos;' type='text' value='ค้นหาอุปกรณ์' />
-            <input class='searchbutton'
-                src='https://1.bp.blogspot.com/-N_4TWVUmXv4/UDdKJf5NwCI/AAAAAAAAIgY/AGrKXgwkrTo/s1600/tombolcari.gif'
-                style='cursor:pointer;vertical-align:top' type='image' value='Go' />
-        </form>
+    <div class="search_basket">
+        <div class='menusearch'>
+            <form action='/search' class='searchform' method='get'>
+                <input class='searchfield' id='q' name='q'
+                    onblur='if(this.value==&apos;&apos;)this.value=this.defaultValue;'
+                    onfocus='if(this.value==this.defaultValue)this.value=&apos;&apos;' type='text'
+                    value='ค้นหาอุปกรณ์' />
+                <input class='searchbutton'
+                    src='https://1.bp.blogspot.com/-N_4TWVUmXv4/UDdKJf5NwCI/AAAAAAAAIgY/AGrKXgwkrTo/s1600/tombolcari.gif'
+                    style='cursor:pointer;vertical-align:top' type='image' value='Go' />
+
+                <div class="basket">
+                    
+                </div>
+            </form>
+        </div>
     </div>
 
     <div class="container">
@@ -112,10 +120,10 @@
 
         {% for i in allproduct %}
 
-        <div class="shop_product" > 
+        <div class="shop_product">
 
-            
-            <div class="img" >
+
+            <div class="img">
                 <img class="image{% if forloop.first %} active{% endif %}" src="{{ image.image.url }}" alt=" Image">
             </div>
 
