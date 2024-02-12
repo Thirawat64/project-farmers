@@ -1,0 +1,88 @@
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        margin-top: 50px;
+        margin-left: 50px;
+    }
+
+    .name{
+        display: flex;
+        padding-left: 2rem;
+    }
+    .location {
+        padding-left: 2rem;
+    }
+</style>
+
+
+
+<div class="container ">
+    <h3>รายละเอียดอุปกรณ์</h3>
+    <div class="name">
+        <p>{{ user.username }}</p>
+        <input type="text" id="location" name="location" placeholder="กรอกที่อยู่">
+        <input type="tel" id="number" name="number" placeholder="กรอกเบอร์โทรศัพท์" minlength="10" maxlength="10"
+            pattern="\d{10}" title="กรุณากรอกเบอร์โทรศัพท์ 10 ตัวเลข" required><br>
+
+    </div><br>
+
+    <h3>ที่อยู่ในการคืนอุปกรณ์</h3>
+    <div class="location">
+        <input type="text" id="location" name="location" placeholder="กรอกที่อยู่">
+    </div><br>
+
+    <div class="detel">
+        <h3>ข้อมูลอุปกรณ์</h3>
+
+        <div class="image">
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                <label for="imageUpload">ภาพอุปกรณ์:</label>
+                <input type="file" id="imageUpload" name="imageUpload" accept="image/*">
+                <input type="submit" value="Upload">
+            </form>
+        </div>
+
+        <div class="video">
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                <label for="videoUpload">วิดีโออุปกรณ์:</label>
+                <input type="file" id="videoUpload" name="videoUpload" accept="video/*">
+                <input type="submit" value="Upload">
+            </form>
+        </div>
+
+        <div class="name">
+            <label for="name">ชื่ออุปกรณ์:</label>
+            <input type="name" id="name" name="name" placeholder="ชื่ออุปกรณ์">
+        </div>
+
+        <div class="type">
+            <label for="type">ประเภทอุปกรณ์:</label>
+            <input type="type" id="type" name="type" placeholder="ประเภทอุปกรณ์">
+        </div>
+
+        <div class="detels">
+            <label for="type">รายละเอียดอุปกรณ์:</label>
+            <input type="type" id="detels" name="detels" placeholder="รายละเอียดอุปกรณ์">
+        </div>
+
+        <div class="price">
+            <label for="price">ราคา:</label>
+            <input type="number" id="price" name="price" step="0.01" placeholder="ราคา" required>
+
+        </div><br>
+
+        <div class="button_sell">
+            <form action="{% url 'show_product' %}">
+                <button type="submit">ยืนยันปล่อยเช่า</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

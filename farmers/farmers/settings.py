@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'main',
     'user',
     'shop',
+    'predict',
 ]
 
 MIDDLEWARE = [

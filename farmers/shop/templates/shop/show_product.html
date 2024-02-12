@@ -1,5 +1,5 @@
 {% extends 'main/base.html' %}
-
+{% load static %}
 
 {% block content %}
 
@@ -135,6 +135,7 @@
                 {% endif %}
                 <p>ราคา: {{i.product_price}} </p>
                 <p>สถานะอุปกรณ์: {{i.product_statustype}}</p>
+                <p>ที่อยู่อุปกรณ์: {{i.product_location}}</p>
 
             </div>
 

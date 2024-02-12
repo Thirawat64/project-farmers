@@ -1,26 +1,23 @@
 from django.contrib.auth.decorators import login_required
 from audioop import reverse
 from django.contrib.auth import login
-from django.shortcuts import render
+from django.shortcuts import render , redirect
 from django.http import HttpRequest, HttpResponseRedirect
 from user.forms import  RegisterForm
+from django.contrib import messages
 
 # Create your views here.
-def Register(req:HttpRequest):
+def Register(req):
     if req.method == 'POST':
         form = RegisterForm(req.POST)
         if form.is_valid():
-            user = form.save()
-            login(req,user)
-            
-            return HttpResponseRedirect(reverse('home'))
-
-        
+            form.save()
+            username = form.cleaned_data.get('username')
+            messages.success(req, f'คุณ {username} สมัครสามชิกสำเร็จ')
+            return redirect('login')  
     else:
         form = RegisterForm()
-         
-    context = {"form": form}
-    return render(req, 'users/register.html',context)
+    return render(req, 'users/register.html',{'form': form})
 #password non12345678
 
 def Login(req):
