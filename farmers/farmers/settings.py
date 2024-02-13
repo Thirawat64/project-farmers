@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'main',
     'user',
     'shop',
-    'predict',
+    'prediction',
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
