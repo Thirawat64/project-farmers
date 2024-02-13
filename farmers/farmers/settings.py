@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'main',
     'user',
     'shop',
+    'prediction',
 ]
 
 MIDDLEWARE = [
@@ -83,9 +84,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'farmers_support',
         'USER': 'root',
-        'PASSWORD': 'thirawat050645**',
+        'PASSWORD': 'root123',
         'HOST': '127.0.0.1',
-        'PORT': '3306',
+        'PORT': '3305',
     }
 }
 

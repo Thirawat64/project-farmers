@@ -21,4 +21,5 @@ urlpatterns = [
     path('',include('main.urls')),
     path('user/',include('user.urls')),
     path('shop/',include('shop.urls')),
+    path('prediction', include('prediction.urls'))
 ]
