@@ -1,7 +1,10 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import get_object_or_404,render,redirect
+from django.shortcuts import get_object_or_404,render,redirect,HttpResponseRedirect
 from .models import *
 from .forms import *
+from django.urls import reverse
+from django.contrib import messages
+
 
 # Create your views here.
 
@@ -42,16 +45,32 @@ def Buy_product(req):
     return render(req, 'shop/buy_product.html')
 
 @login_required
+# def Sell_product(req):
+#     if req.method == 'POST':
+#         form = UploadForm(req.POST)
+#         if form.is_valid():
+#                 form.save()
+#         else:
+#             print(form.errors.as_data())
+                
+           
+#         return HttpResponseRedirect(reverse('show_product'))
+    
+#     form = UploadForm()
+#     context = {'form': form}
+#     return render(req, 'shop/sell_product.html', context)
 def Sell_product(req):
-    if req.POST:
+    status = Status.objects.all()
+    form = UploadForm()
+    if req.method == 'POST':
         form = UploadForm(req.POST, req.FILES)
-        print(req.FILES)
         if form.is_valid():
-            print('data')
             form.save()
-        print('hello world')
-        return redirect('')
-    return render(req, 'shop/sell_product.html',{'form': UploadForm})
+            return redirect('show_product')
+    else:
+        form = UploadForm()
+
+    return render(req, 'shop/sell_product.html',{'form': form,'status':status})
 
 def Basket(req):
     return render(req, 'shop/basket.html')

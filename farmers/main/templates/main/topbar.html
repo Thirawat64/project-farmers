@@ -1,7 +1,6 @@
-
 {% load static %}
 
-<style>
+<!-- <style>
     .navbar{
         
         display: flex;
@@ -36,14 +35,14 @@
     }
   
     .menu li a{
-        color: white;
+        color: rgb(255, 255, 255);
         text-decoration:none;
     }
     
     
-  </style>
+  </style> -->
 
-<section class="navbar">
+<!-- <section class="navbar">
     <div class="user-logo">
         <a href="{% url 'home' %}"> <img src="{% static 'static/logo.jpg' %}" width="20px" height="20px"  alt=""></a>
     </div>
@@ -61,5 +60,40 @@
       {% endif %}
       
     </ul>
-</section> <br>
+</section> <br> -->
 
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'home' %}"> <img src="{% static 'static/logo.jpg' %}"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 me-">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'home' %}">หน้าแรก</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'help' %}">ช่วยเหลือ</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'about' %}">เกี่ยวกับ</a>
+        </li>
+
+        {% if user.is_authenticated %}
+        <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">ออกจากระบบ</a></li>
+        <li class="nav-item"><a href="{% url 'dashboard' %}" class="nav-link">{{ user.username }}</a></li>
+        {% else %}
+        <li class="nav-item"><a href="{% url 'login' %}" class="nav-link">เข้าสู่ระบบ</a></li>
+        <li class="nav-item"><a href="{% url 'register' %}" class="nav-link">สมัครสมาชิก</a></li>
+
+        {% endif %}
+      </ul>
+      
+    </div>
+  </div>
+</nav>

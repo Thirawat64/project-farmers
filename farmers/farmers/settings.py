@@ -36,6 +36,8 @@ INSTALLED_APPS = [
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
+    "crispy_forms",
+    "crispy_bootstrap5",
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'main',
@@ -43,6 +45,10 @@ INSTALLED_APPS = [
     'shop',
     'predict',
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -127,6 +133,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = "static/"
+
+MEDIA_URL = "Parcel/"
+MEDIA_ROOT = "Parcel/"
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
