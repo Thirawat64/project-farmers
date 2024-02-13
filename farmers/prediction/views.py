@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from .models import *
 import joblib
@@ -9,7 +10,7 @@ models = joblib.load('C:\\Users\\lek09\\OneDrive\\Desktop\\project-farmers\\farm
 
 def index(req):
     return render(req, 'predictions/index.html')
-
+@login_required
 def predict_view(req):
     return render(req, 'predictions/predict.html') 
 
@@ -76,3 +77,4 @@ def predict(request):
 def show_data_save_predict(req):
     data_save_predict = AreaPrediction.objects.filter(user=req.user)
     return render(req, 'predictions/data_save_predict.html',{'data_save_predict':data_save_predict})
+
