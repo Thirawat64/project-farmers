@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import *
 import joblib
 
@@ -43,16 +43,21 @@ def predict(request):
             drainage_numeric = 1
 
         prediction = models.predict([[ph_value, max_temperature, humidity, precip, soil_type_numeric, area_slope, drainage_numeric]])
-        if prediction == [0]:
-            prediction = 'มันสำปะหลัง'
-        if prediction == [1]:
-            prediction = 'ข้าวโพด'
-        if prediction == [2]:
-            prediction = 'ปาล์มน้ำมัน'
-        if prediction == [3]:
-            prediction = 'ข้าว'
-        if prediction == [4]:
-            prediction = 'อ้อย'
+
+        if 3.5 < ph_value < 9 and 10 < max_temperature < 45 and 19 < humidity < 101 and 499 < precip < 3001 and area_slope < 60:
+            if prediction == [0]:
+                prediction = 'มันสำปะหลัง'
+            elif prediction == [1]:
+                prediction = 'ข้าวโพด'
+            elif prediction == [2]:
+                prediction = 'ปาล์มน้ำมัน'
+            elif prediction == [3]:
+                prediction = 'ข้าว'
+            elif prediction == [4]:
+                prediction = 'อ้อย'
+        else:
+            prediction = 'พื้นที่ของคุณไม่เหมาะสมที่จะปลูกพืชในการวิเคราะห์ของเรา'
+
 
 
 
@@ -75,6 +80,11 @@ def predict(request):
 
 
 def show_data_save_predict(req):
-    data_save_predict = AreaPrediction.objects.filter(user=req.user)
+    data_save_predict = AreaPrediction.objects.filter(user=req.user).order_by('-user')
     return render(req, 'predictions/data_save_predict.html',{'data_save_predict':data_save_predict})
 
+def delete_data(request, id):
+    AreaPrediction.objects.get(pk=id).delete()
+    return redirect('show_data_save_predict')
+
+    

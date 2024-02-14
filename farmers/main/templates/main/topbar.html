@@ -1,65 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <title>Document</title>
+</head>
 
-{% load static %}
-
-<style>
-    .navbar{
-        
-        display: flex;
-        height: 10%;
-        background-color:075650;
-    }
-    .user-logo,img{
-    width: 60px;
-    height: 60px;
-    margin-top: 0.3rem;
-    margin-left: 0.8rem;
-    border-radius: 50px;
-    background-size: contain;
-    
-    }
-
-    
-    
-    .menu{
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: right;
-        list-style: none;
-        float: right;
-        color: black;
-        padding-right: 1cm;
-    }
-  
-    .menu li{
-        margin: 0 1rem;
-    }
-  
-    .menu li a{
-        color: white;
-        
-    }
-  
-   
-  </style>
-
-<section class="navbar">
-    <div class="user-logo">
-        <a href="{% url 'home' %}"> <img src="{% static 'static/logo.jpg' %}" width="20px" height="20px"  alt=""></a>
+<body>
+  <section class="bg-green-800 flex items-center justify-between p-4">
+    <div class="flex items-center">
+        <a href="{% url 'home' %}">
+            
+        </a>
     </div>
-    <ul class="menu">
-      <li class="nav-item"><a href="{% url 'home' %}" class="nav-link">หน้าแรก</a></li>
-      <li class="nav-item"><a href="{% url 'help' %}" class="nav-link active" aria-current="page">ช่วยเหลือ</a></li>
-      <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">เกี่ยวกับ</a></li>
-      {% if user.is_authenticated %}
-      <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">ออกจากระบบ</a></li>
-        <li class="nav-item"><a href="{% url 'dashboard' %}" class="nav-link">{{ user.username }}</a></li>
-      {% else %}
-        <li class="nav-item"><a href="{% url 'login' %}" class="nav-link">เข้าสู่ระบบ</a></li>
-        <li class="nav-item"><a href="{% url 'register' %}" class="nav-link">สมัครสมาชิก</a></li>
-        
-      {% endif %}
-      
+    <ul class="flex space-x-4 text-white">
+        <li><a href="{% url 'home' %}" class="hover:underline">หน้าแรก</a></li>
+        <li><a href="{% url 'help' %}" class="hover:underline">ช่วยเหลือ</a></li>
+        <li><a href="{% url 'about' %}" class="hover:underline">เกี่ยวกับ</a></li>
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'logout' %}" class="hover:underline">ออกจากระบบ</a></li>
+            <li><a href="{% url 'dashboard' %}" class="hover:underline">{{ user.username }}</a></li>
+        {% else %}
+            <li><a href="{% url 'login' %}" class="hover:underline">เข้าสู่ระบบ</a></li>
+            <li><a href="{% url 'register' %}" class="hover:underline">สมัครสมาชิก</a></li>
+        {% endif %}
     </ul>
-</section> <br>
+</section>
+{% block content %}
 
+{% endblock %}
+</body>
+</html>
