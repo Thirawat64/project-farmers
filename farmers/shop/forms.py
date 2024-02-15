@@ -11,4 +11,9 @@ class UploadForm(forms.ModelForm):
         model = AllProduct
         fields = '__all__'
 
+class Update(forms.ModelForm):
+    class Meta:
+        model = AllProduct
+        fields = '__all__'
+
 

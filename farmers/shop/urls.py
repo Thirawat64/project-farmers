@@ -11,6 +11,7 @@ urlpatterns = [
     path('sell_product/',Sell_product,name='sell_product'),
     path('buy_product/',Buy_product,name='buy_product'),
     path('basket/',Basket,name='basket'),
+    path('edit/Allproduct/<int:id>/',update,name='edit'),
     #path('delete/<int:id>/',delete_view,name='delete')
 ]
 

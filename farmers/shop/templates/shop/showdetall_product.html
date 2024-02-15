@@ -71,6 +71,7 @@
         margin-left: 80rem;
         margin-top: -3rem;
     }
+
     /* .tow_button{
         border: 1px solid red;
         height: 10px;
@@ -78,63 +79,63 @@
 </style>
 
 
-<div class="content">
-
-    <div class="container">
-
-        <h3>แสดงรายละเอียดอุปกรณ์</h3>
-        {% for i in product %}
-
-        <div class="shop_product">
-
-            <div class="img">
-                <img class="image{% if forloop.first %} active{% endif %}" src="{{ i.image.url }}" alt=" Image">
-            </div>
-
-            <div class="detall">
-                <h3>ชื่อ: {{ i.product_name }} </a></h3>
-                <p>ขนาดอุปกรณ์: {{ i.product_size }}</p>
-                <p>รายละเอียดอุปกรณ์: {{ i.product_detail }}</p>
-            </div>
-
-            <div class="location">
-                <h3>ที่อยู่อุปกรณ์</h3>
-                <p> {{i.product_location}} เบอร์: {{i.phon_number}}</p>
-
-            </div>
-
-            <div class="status">
-                <p>สถานะอุปกรณ์: {{i.product_statustype}}</p>
-            </div>
-
-            <div class="price">
-
-                <p>ราคา: {{i.product_price}} บาท </p>
-            </div>
 
 
+<div class="container">
 
+    <h3>แสดงรายละเอียดอุปกรณ์</h3>
+    {% for i in product %}
+
+    <div class="shop_product">
+
+        <div class="img">
+            <img class="image{% if forloop.first %} active{% endif %}" src="{{ i.image.url }}" alt=" Image">
+        </div>
+
+        <div class="detall">
+            <h3>ชื่อ: {{ i.product_name }} </a></h3>
+            <p>ขนาดอุปกรณ์: {{ i.product_size }}</p>
+            <p>รายละเอียดอุปกรณ์: {{ i.product_detail }}</p>
+        </div>
+
+        <div class="location">
+            <h3>ที่อยู่อุปกรณ์</h3>
+            <p> {{i.product_location}} เบอร์: {{i.phon_number}}</p>
 
         </div>
-        {% endfor %}
-        <div class="tow_button">
-            <div class="button_sell">
-                <form action="{% url 'buy_product' %}">
-                    <button type="submit">เช่าอุปกรณ์</button>
 
-                </form>
-            </div>
-            <div class="button_basket">
-                <form action="{% url 'basket' %}">
-                    <button type="submit">ใส่ตระกร้า</button>
-                </form>
-            </div>
+        <div class="status">
+            <p>สถานะอุปกรณ์: {{i.product_status}}</p>
+        </div>
+
+        <div class="price">
+
+            <p>ราคา: {{i.product_price}} บาท </p>
+        </div>
+
+
+
+
+    </div>
+    {% endfor %}
+    <div class="tow_button">
+        <div class="button_sell">
+            <form action="{% url 'buy_product' %}">
+                <button type="submit">เช่าอุปกรณ์</button>
+
+            </form>
+        </div>
+        <div class="button_basket">
+            <form action="{% url 'basket' %}">
+                <button type="submit">ใส่ตระกร้า</button>
+            </form>
         </div>
     </div>
-    <!-- <div class="sell_product">
+</div>
+<!-- <div class="sell_product">
         <form action="{% url 'sell_product' %}">
             <button type="submit">ปล่อยเช่าอุปกรณ์</button>
         </form>
     </div> -->
-</div>
+
 {% endblock %}

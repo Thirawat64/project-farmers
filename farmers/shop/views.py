@@ -78,7 +78,18 @@ def Basket(req):
 #     allProduct_instance = get_object_or_404(AllProduct, id=product_id)
 #     return render(request, 'shop/Showdetall_product.html', {'AllProduct': allProduct_instance})
     
+def update(req,id):
+    form = Update()
+    c = AllProduct.objects.get(pk=id)
+    if req.method == 'POST':
+        form = Update(req.POST,instance=c)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    else:
+        form = Update(instance=c)
 
+    return render(req,'shop/edit_product.html',{'form':form})
 
 # def delete_view(req,id):
 #     s = AllProduct.objects.get(pk=id)
