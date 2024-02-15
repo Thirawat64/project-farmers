@@ -9,11 +9,11 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
-{% extends 'main/base.html' %}
+{% extends 'main/newhome.html' %}
 {% load static %}
 
 {% block content %}
-<div class="max-w-10xl mx-auto bg-white p-6 rounded-md">
+<div class="max-w-10xl mx-auto bg-white p-6 rounded-md mt-10">
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400">
@@ -106,8 +106,8 @@
                         <div x-show="open" @click.away="open = false" class="fixed inset-0 flex items-center">
                             <div
                                 class="bg-white p-6 w-72 max-w-lg mx-auto rounded shadow-xl border border-[#2B3843] text-center">
-                                <p class="text-xl font-family mb-4">ลบบัญชีผู้ใช้</p>
-                                <p>ยืนยันการลบบัญชีผู้ใช้หรือไม่</p>
+                                <p class="text-xl font-family mb-4">ลบประวัติการทำนายนี้</p>
+                                <p>ยืนยันการลบประวัติการทำนายนี้หรือไม่</p>
                                 <div class="text-center">
                                     <a href="{% url 'delete_data' i.id %}"
                                         class="mt-4 bg-[#E81C03] hover:bg-cover text-red-500 px-4 py-2.5 rounded mr-5">ยืนยัน</a>

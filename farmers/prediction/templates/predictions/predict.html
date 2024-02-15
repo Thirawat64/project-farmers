@@ -6,7 +6,7 @@
   <title>Data Input Form</title>
   
 </head>
-{% extends 'main/base.html' %}
+{% extends 'main/newhome.html' %}
 {% load static %}
 
 {% block content %}
@@ -33,7 +33,7 @@
       </div>
 
       <div class="mb-4">
-        <label for="rainfall" class="block text-gray-600">ปริมาณน้ำฝนเฉลี่ย(มิลลิเมตร):</label>
+        <label for="rainfall" class="block text-gray-600">ปริมาณน้ำฝนต่อปี(มิลลิเมตร):</label>
         <input type="number" id="precip" name="precip" placeholder="ตัวอย่างเช่น '1800'" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" step="any" required>
       </div>
 
@@ -64,8 +64,10 @@
         <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700">ทำนาย</button>
     </div>
     </form>
-    
   </div>
-
+  <div class="hover:text-blue-800 text-center mt-5">
+    <a href="https://www.visualcrossing.com/weather-data">ข้อมูลสภาพอากาศคลิก</a>
+  </div>
+  
 {% endblock %}
 </html>

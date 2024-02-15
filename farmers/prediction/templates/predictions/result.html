@@ -7,9 +7,11 @@
     <title>Prediction Result</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
+{% extends 'main/newhome.html' %}
+{% load static %}
 
-<body class="bg-gray-200 p-8">
-    <div class="max-w-md mx-auto bg-white p-6 rounded-md shadow-md">
+    {% block content %}
+    <div class="max-w-md mx-auto bg-white p-6 rounded-md shadow-md mt-5">
         <h2 class="text-2xl font-semibold mb-4 text-center">ประวัติการทำนายของคุณ</h2>
 
         <div class="mb-4">
@@ -21,7 +23,6 @@
         <a href="{% url 'predict_view' %}"class="bg-blue-500 text-white px-4 py-2  rounded-md hover:bg-blue-700">ทำนายผลต่อ</a>
         <a href="{% url 'show_data_save_predict' %}"class="bg-blue-500 text-white px-4 py-2  rounded-md hover:bg-blue-700">ดูประวัติ</a>
     </div>
-
-</body>
+    {% endblock %}
 
 </html>

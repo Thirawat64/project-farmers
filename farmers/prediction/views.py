@@ -78,7 +78,7 @@ def predict(request):
 
     return render(request, 'predictions/result.html',{'prediction':prediction})
 
-
+@login_required
 def show_data_save_predict(req):
     data_save_predict = AreaPrediction.objects.filter(user=req.user).order_by('-user')
     return render(req, 'predictions/data_save_predict.html',{'data_save_predict':data_save_predict})

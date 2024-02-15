@@ -1,13 +1,11 @@
-{% extends 'main/base.html' %}
+{% extends 'main/newhome.html' %}
 {% load static %}
 
 
 {% block content %}
-<!-- <body class="flex items-center justify-center h-screen bg-gray-100"> -->
     <nav class="flex flex-col items-center gap-4 mt-4 ">
-        <a href="{% url 'predict_view' %}" class="text-gray-700  text-2xl hover:bg-gray-700 hover:text-white px-4 py-5 rounded border border-gray-300">ทำนายพืชที่เหมาะสม</a>
-        <a href="{% url 'show_data_save_predict' %}" class="text-gray-700 text-2xl hover:bg-gray-700 hover:text-white px-9 py-5 rounded border border-gray-300">ประวัติการทำนาย</a>
+        <a href="{% url 'predict_view' %}" class="bg-green-500 text-2xl hover:bg-green-700 hover:text-white px-4 py-5 rounded border border-gray-300">ทำนายพืชที่เหมาะสม</a>
+        <a href="{% url 'show_data_save_predict' %}" class="bg-green-500 text-2xl hover:bg-green-700 hover:text-white px-4 py-5 rounded border border-gray-300">ประวัติการทำนาย</a>
     </nav>
-<!-- </body> -->
 {% endblock %} 
 
