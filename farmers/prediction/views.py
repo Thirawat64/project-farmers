@@ -10,13 +10,14 @@ models = joblib.load('models/NewDecisionTree_model.joblib')
 def index(req):
     return render(req, 'predictions/index.html')
 
+
 @login_required
 def predict_view(req):
     return render(req, 'predictions/predict.html') 
 
 
 
-
+#ฟังชันทำนาย
 def predict(request):
     if request.method == 'POST':
         ph_value = float(request.POST.get('ph_value'))
@@ -27,7 +28,7 @@ def predict(request):
         area_slope = float(request.POST.get('area_slope'))
         drainage = request.POST.get('drainage')
 
-
+        #สร้างเงื่อนไขเพื่อนเปลี่ยน soil_type เป็นตัวเลข
         soil_type_numeric = 0
         if soil_type == 'ดินเหนียว':
             soil_type_numeric = 0
@@ -36,14 +37,17 @@ def predict(request):
         elif soil_type == 'ดินทราย':
             soil_type_numeric = 3
 
+        #สร้างเงื่อนไขเพื่อนเปลี่ยน drainage เป็นตัวเลข
         drainage_numeric = 0
         if drainage == 'ไม่สามารถระบายน้ำได้':
             drainage_numeric = 0
         if drainage == 'ระบายน้ำได้':
             drainage_numeric = 1
 
+        #นำข้อมูล มาทำนาย ด้วยโมเดล 
         prediction = models.predict([[ph_value, max_temperature, humidity, precip, soil_type_numeric, area_slope, drainage_numeric]])
 
+        #สร้างเงื่อนไขเพื่อส่งออกเป็น output
         if 3.5 < ph_value < 9 and 10 < max_temperature < 45 and 19 < humidity < 101 and 499 < precip < 3001 and area_slope < 60:
             if prediction == [0]:
                 prediction = 'มันสำปะหลัง'
@@ -58,9 +62,7 @@ def predict(request):
         else:
             prediction = 'พื้นที่ของคุณไม่เหมาะสมที่จะปลูกพืชในการวิเคราะห์ของเรา'
 
-
-
-
+        #นำข้อมูลบันทึกลง database
         area_prediction = AreaPrediction.objects.create(
             user=request.user,
             ph_value=ph_value,
