@@ -2,14 +2,14 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from .models import *
 import joblib
+import os
 
-# Create your views here.
-
-#สร้างโมเดล
-models = joblib.load('C:\\Users\\lek09\\OneDrive\\Desktop\\project-farmers\\farmers\\models\\NewDecisionTree_model.joblib')
+# โหลดโมเดล
+models = joblib.load('models/NewDecisionTree_model.joblib')
 
 def index(req):
     return render(req, 'predictions/index.html')
+
 @login_required
 def predict_view(req):
     return render(req, 'predictions/predict.html') 
@@ -87,4 +87,3 @@ def delete_data(request, id):
     AreaPrediction.objects.get(pk=id).delete()
     return redirect('show_data_save_predict')
 
-    

@@ -14,3 +14,7 @@ def Help(req):
 
 def contact(req):
     return render(req, 'main/detall_contact.html')
+
+
+def calenda(req):
+    return render(req, 'main/calenda.html')
