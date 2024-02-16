@@ -1,4 +1,5 @@
-{% extends 'main/base.html' %}
+{% extends 'main/home.html' %}
+{% load static %}
 
 
 {% block content %} 
@@ -112,7 +113,7 @@ body{
         <div class="user-login-box">
             <span class="user-icon"></span>
             <div class="user-name">เข้าสู่ระบบ</div>
-            <form action="{% url 'login' %}" method="post">
+            <form action="{% url 'login' %}" method="POST">
                 {% csrf_token %}
                 {{ form.as_p }} <br>
                 <button type="submit">เข้าสู่ระบบ</button>

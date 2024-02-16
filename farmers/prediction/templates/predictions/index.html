@@ -1,9 +1,9 @@
-{% extends 'main/newhome.html' %}
+{% extends 'main/home.html' %}
 {% load static %}
 
 
 {% block content %}
-    <nav class="flex flex-col items-center gap-4 mt-4 ">
+    <nav class="flex justify-center gap-4 mt-4 pl-28">
         <a href="{% url 'predict_view' %}" class="bg-green-500 text-2xl hover:bg-green-700 hover:text-white px-4 py-5 rounded border border-gray-300">ทำนายพืชที่เหมาะสม</a>
         <a href="{% url 'show_data_save_predict' %}" class="bg-green-500 text-2xl hover:bg-green-700 hover:text-white px-4 py-5 rounded border border-gray-300">ประวัติการทำนาย</a>
     </nav>
