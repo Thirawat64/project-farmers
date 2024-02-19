@@ -2,140 +2,55 @@
 
 
 {% block content %}
+<div class="container mx-auto">
 
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-    }
+    <h3 class="text-3xl font-semibold mb-4">แสดงรายละเอียดอุปกรณ์</h3>
 
-    .content {
-        /* border: 1px solid red; */
-        width: 100%;
-        height: 100%;
-    }
-
-    .shop_product {
-
-        width: 100%;
-        height: 80%;
-    }
-
-    .img {
-        padding: 3rem;
-        width: 50px;
-        height: 50px;
-    }
-
-    .detall {
-        padding: 1rem;
-        width: 800px;
-        height: 200px;
-        margin-left: auto;
-        background-color: D9D9D9;
-    }
-
-    .location {
-        padding: 1rem;
-        margin-left: 45rem;
-    }
-
-    .status {
-        padding: 1rem;
-        margin-left: 45rem;
-    }
-
-    .price {
-        padding: 1rem;
-        /* border: 1px solid red; */
-        margin-left: 45rem;
-        font-size: larger;
-    }
-
-    .button_sell {
-
-        margin-left: 70rem;
-        margin-top: -3rem;
-
-    }
-
-    .button_sell,
-    button {
-        width: 110px;
-        height: 40px;
-        background-color: 075650;
-        color: white;
-    }
-
-    .button_basket {
-        margin-left: 80rem;
-        margin-top: -3rem;
-    }
-
-    /* .tow_button{
-        border: 1px solid red;
-        height: 10px;
-    } */
-</style>
-
-
-
-
-<div class="container">
-
-    <h3>แสดงรายละเอียดอุปกรณ์</h3>
     {% for i in product %}
+    <div class="flex flex-wrap items-start border border-gray-300 rounded-lg p-4 mb-4">
 
-    <div class="shop_product">
-
-        <div class="img">
-            <img class="image{% if forloop.first %} active{% endif %}" src="{{ i.image.url }}" alt=" Image">
+        <div class="w-1/4 pr-8">
+            <img class="w-24 h-24 rounded-full" src="{{ i.image.url }}" alt="Image">
         </div>
 
-        <div class="detall">
-            <h3>ชื่อ: {{ i.product_name }} </a></h3>
-            <p>ขนาดอุปกรณ์: {{ i.product_size }}</p>
-            <p>รายละเอียดอุปกรณ์: {{ i.product_detail }}</p>
+        <div class="w-3/4">
+            <div class="mb-4">
+                <h3 class="text-lg font-semibold">ชื่อ: {{ i.product_name }}</h3>
+                <p>ขนาดอุปกรณ์: {{ i.product_size }}</p>
+                <p>รายละเอียดอุปกรณ์: {{ i.product_detail }}</p>
+            </div>
+
+            <div class="mb-4">
+                <h3 class="text-lg font-semibold">ที่อยู่อุปกรณ์</h3>
+                <p>{{ i.product_location }} เบอร์: {{ i.phon_number }}</p>
+            </div>
+
+            <div class="mb-4">
+                <p>สถานะอุปกรณ์: {{ i.product_status }}</p>
+            </div>
+
+            <div>
+                <p class="text-lg font-semibold">ราคา: {{ i.product_price }} บาท</p>
+            </div>
         </div>
-
-        <div class="location">
-            <h3>ที่อยู่อุปกรณ์</h3>
-            <p> {{i.product_location}} เบอร์: {{i.phon_number}}</p>
-
-        </div>
-
-        <div class="status">
-            <p>สถานะอุปกรณ์: {{i.product_status}}</p>
-        </div>
-
-        <div class="price">
-
-            <p>ราคา: {{i.product_price}} บาท </p>
-        </div>
-
-
-
 
     </div>
     {% endfor %}
-    <div class="tow_button">
-        <div class="button_sell">
-            <form action="{% url 'buy_product' %}">
-                <button type="submit">เช่าอุปกรณ์</button>
 
-            </form>
-        </div>
-        <div class="button_basket">
-            <form action="{% url 'basket' %}">
-                <button type="submit">ใส่ตระกร้า</button>
-            </form>
-        </div>
+    <div class="flex justify-between mt-8">
+        <form action="{% url 'buy_product' %}" class="mr-4">
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">เช่าอุปกรณ์</button>
+        </form>
+
+        <form action="{% url 'basket' %}">
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">ใส่ตระกร้า</button>
+        </form>
     </div>
 </div>
-<!-- <div class="sell_product">
-        <form action="{% url 'sell_product' %}">
-            <button type="submit">ปล่อยเช่าอุปกรณ์</button>
-        </form>
-    </div> -->
 
+<div class="sell_product fixed bottom-4 right-4">
+    <form action="{% url 'sell_product' %}">
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">ปล่อยเช่าอุปกรณ์</button>
+    </form>
+</div>
 {% endblock %}

@@ -2,86 +2,25 @@
 
 {% block content %} 
 
-<style>
-   *{
-    margin: 0;
-    padding: 0;
-}
-
-.container{
-    background: #D9D9D9;
-    width: 50%;
-    height: 70%;
-    display: grid;
-    align-items: center;
-    justify-content: center;
-    margin: auto;
-    margin-top: 50px;
-}
-
-.location,.time{
-    
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    margin-left: 30%;
-    margin-top: 4rem;
-    width: 30%;
-    border-radius: 5%;
-    
-}
-
-.search{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-button{
-    width: 100px;
-}
-
-.location{
-    display: flex;
-}
-.location label{ 
-    width: 900px;
-
-}
-
-form{
-    display: flex;
-    justify-content: center;
-    width: 80px;
-}
-
-button{
-    background-color: 075650;
-    width: 179px;
-    height: 40px;
-    color: white;
-}
-</style>
-
-<div class="container">
-    <div class="location">
-        <label for="time">สถานที่ใช้งาน:</label>
+<div class="bg-gray-300 w-1/2 h-3/5 flex flex-col items-center justify-center mx-auto mt-16">
+    <div class="flex justify-center mt-4">
+        <label for="location" class="mr-4">สถานที่ใช้งาน:</label>
         <form action="{% url 'search' %}" method="get">
-            <input type="search" name="search">
+            <input type="search" name="search" class="border rounded px-2 py-1">
         </form>
     </div>
-    <div class="time">
-        <label for="time">วันที่ใช้งาน:</label>
-        <input type="date" id="birthday" name="birthday">
+    <div class="flex justify-center mt-4">
+        <label for="time" class="mr-4">วันที่ใช้งาน:</label>
+        <input type="date" id="time" name="time" class="border rounded px-2 py-1">
     </div>
-    <div class="search">
+    <div class="flex justify-center mt-16">
         <form action="{% url 'show_product' %}">
-            <button type="submit">ค้นหา</button>
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">ค้นหา</button>
         </form>
     </div>
-    
 </div>
+
+
 
 
 
