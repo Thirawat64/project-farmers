@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import *
 import joblib
 
@@ -77,3 +77,7 @@ def predict(request):
 def show_data_save_predict(req):
     data_save_predict = AreaPrediction.objects.filter(user=req.user)
     return render(req, 'prediction/data_save_predict.html',{'data_save_predict':data_save_predict})
+
+def delete_data(request, id):
+    AreaPrediction.objects.get(pk=id).delete()
+    return redirect('show_data_save_predict')

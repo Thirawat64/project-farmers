@@ -6,7 +6,7 @@ from django.urls import reverse
 from django.contrib import messages
 
 
-# Create your views here.
+
 
 
 def Location(req):
@@ -37,7 +37,7 @@ def product(req):
 
 @login_required
 def Showdetall_product(req,product_id):
-    one_product = AllProduct.objects.filter(id=product_id)
+    one_product = AllProduct.objects.get(pk=product_id)
     context = {'product':one_product}
     return render(req, 'shop/showdetall_product.html',context)
 
@@ -45,20 +45,7 @@ def Buy_product(req):
     return render(req, 'shop/buy_product.html')
 
 @login_required
-# def Sell_product(req):
-#     if req.method == 'POST':
-#         form = UploadForm(req.POST)
-#         if form.is_valid():
-#                 form.save()
-#         else:
-#             print(form.errors.as_data())
-                
-           
-#         return HttpResponseRedirect(reverse('show_product'))
-    
-#     form = UploadForm()
-#     context = {'form': form}
-#     return render(req, 'shop/sell_product.html', context)
+
 def Sell_product(req):
     status = Status.objects.all()
     form = UploadForm()
@@ -72,11 +59,9 @@ def Sell_product(req):
 
     return render(req, 'shop/sell_product.html',{'form': form,'status':status})
 
-def Basket(req):
-    return render(req, 'shop/basket.html')
-# def Showdetall_product(request, product_id):
-#     allProduct_instance = get_object_or_404(AllProduct, id=product_id)
-#     return render(request, 'shop/Showdetall_product.html', {'AllProduct': allProduct_instance})
+# def Basket(req):
+#     return render(req, 'shop/basket.html')
+
     
 def update(req,id):
     form = Update()
@@ -91,8 +76,29 @@ def update(req,id):
 
     return render(req,'shop/edit_product.html',{'form':form})
 
-# def delete_view(req,id):
-#     s = AllProduct.objects.get(pk=id)
-#     s.delete()
-#     return redirect('delete_view')
+def delete(req, id):
+    print(id)
+    CartItem.objects.get(pk=id).delete()
+    return redirect('cart')
+
+def add_to_cart(req, product_id):
+    product = AllProduct.objects.get(pk=product_id)  # ดึงสินค้าจากฐานข้อมูลด้วย ID
+    cart = Cart.objects.get(user=req.user)
+    
+    cart_item = CartItem.objects.filter(cart=cart, product=product ,user=req.user)
+    if cart_item:
+        for i in cart_item:
+            if i.product.id == product_id:
+                i.quantity += 1
+                i.save()
+    else:
+        cart_items = CartItem.objects.create(cart=cart, product=product ,user=req.user)
+        cart_items.save()
+
+    return redirect('cart')  # ส่งไปยังหน้าตะกร้าสินค้า
+
+def cart(req):
+    Cart = CartItem.objects.filter(user=req.user)
+    context = {'Cart':Cart}
+    return render(req,'shop/cart.html',context)
 

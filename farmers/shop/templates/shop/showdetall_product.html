@@ -2,55 +2,51 @@
 
 
 {% block content %}
-<div class="container mx-auto">
+<div class="container mx-auto mt-auto">
 
     <h3 class="text-3xl font-semibold mb-4">แสดงรายละเอียดอุปกรณ์</h3>
 
-    {% for i in product %}
+    
     <div class="flex flex-wrap items-start border border-gray-300 rounded-lg p-4 mb-4">
 
-        <div class="w-1/4 pr-8">
-            <img class="w-24 h-24 rounded-full" src="{{ i.image.url }}" alt="Image">
+        <div class="w-1/4 pr-10">
+            <img class="w-50 h-50 " src="{{ product.image.url }}" alt="Image">
         </div>
 
-        <div class="w-3/4">
+        <div class="w-4/4">
             <div class="mb-4">
-                <h3 class="text-lg font-semibold">ชื่อ: {{ i.product_name }}</h3>
-                <p>ขนาดอุปกรณ์: {{ i.product_size }}</p>
+                <h3 class="text-lg font-semibold">ชื่อ: {{ product.product_name }}</h3>
+                <p>ขนาดอุปกรณ์: {{ product.product_sproductze }}</p>
                 <p>รายละเอียดอุปกรณ์: {{ i.product_detail }}</p>
             </div>
 
             <div class="mb-4">
                 <h3 class="text-lg font-semibold">ที่อยู่อุปกรณ์</h3>
-                <p>{{ i.product_location }} เบอร์: {{ i.phon_number }}</p>
+                <p>{{ product.product_location }} เบอร์: {{ product.phon_number }}</p>
             </div>
 
             <div class="mb-4">
-                <p>สถานะอุปกรณ์: {{ i.product_status }}</p>
+                <p>สถานะอุปกรณ์: {{ product.product_status }}</p>
             </div>
 
             <div>
-                <p class="text-lg font-semibold">ราคา: {{ i.product_price }} บาท</p>
+                <p class="text-lg font-semibold">ราคา: {{ product.product_price }} บาท</p>
             </div>
         </div>
 
     </div>
-    {% endfor %}
+   
 
     <div class="flex justify-between mt-8">
         <form action="{% url 'buy_product' %}" class="mr-4">
             <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">เช่าอุปกรณ์</button>
         </form>
-
-        <form action="{% url 'basket' %}">
-            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">ใส่ตระกร้า</button>
+        
+        <form action="{% url 'add_to_cart' product.id  %}" class="mr-4">
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">เพิ่มลงตะกร้า</button>
         </form>
+        
     </div>
 </div>
 
-<div class="sell_product fixed bottom-4 right-4">
-    <form action="{% url 'sell_product' %}">
-        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">ปล่อยเช่าอุปกรณ์</button>
-    </form>
-</div>
 {% endblock %}
