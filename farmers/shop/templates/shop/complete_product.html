@@ -14,24 +14,40 @@
                         </div>
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        ผู้ปล่อยเช่า {{ user.user }}
+                        User name
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        วันที่ต้องการปล่อยเช่า
+                        ph
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        ราคา
+                        อุณหภูมิสูงสุดเฉลี่ย
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        จำนวน
+                        ความชื้นสัมพัทธ์
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        แอ็คชั่น
+                        ปริมาณน้ำฝน
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        ชนิดของดิน
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        ความลาดชันของพื้นที่
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        สถานะการระบายน้ำ
+                    </th>
+
+                    <th scope="col" class="px-6 py-3">
+                        พืชที่เหมาะสม
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        ลบ
                     </th>
                 </tr>
             </thead>
             <tbody>
-                {% for i in sell_buy %}
+                {% for i in data_save_predict %}
                 <tr
                     class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                     <td class="w-4 p-4">
@@ -43,7 +59,7 @@
                     </td>
 
                     <th scope="col" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        {{i.image}}
+                        {{i.user}}
                     </th>
                     <td class="px-6 py-4">
                         {{i.ph_value}}
@@ -94,7 +110,10 @@
             </tbody>
 
         </table>
-        
+        <div class="flex justify-center space-x-20 mt-3 mb-3">
+            <a href="{% url 'predict_view' %}"
+                class="bg-blue-500 text-white px-4 py-2  rounded-md hover:bg-blue-700">ทำนายผล</a>
+        </div>
     </div>
 </div>
 

@@ -4,6 +4,7 @@ from .models import *
 
 class Search1(forms.Form):
     search = forms.CharField(label='Search')
+  
 
 
 class UploadForm(forms.ModelForm):

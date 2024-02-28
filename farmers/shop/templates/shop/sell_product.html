@@ -21,8 +21,8 @@
         </div>
     </div>
     
-    <label for="exampleInputEmail1" class="form-label ms-0 col-12 mt-3">
-        <h3>ที่อยู่ในการคืนอุปกรณ์</h3>
+    <label for="exampleInputEmail1" class="form-label ms-0 col-12 mt-3 ">
+        <h3 class="text-1xl">ที่อยู่ในการคืนอุปกรณ์</h3>
     </label>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div class="col-span-full md:col-span-2">
@@ -66,6 +66,16 @@
         <div class="col-span-full md:col-span-1">
             <label for="product_detail" class="col-auto ms-5 mt-3">รายระเอียดอุปกรณ์:</label>
             <textarea id="product_detail" name="product_detail" class="form-textarea mt-3 bg-gray-300">{{ allproduct_instance.product_detail }}</textarea>
+        </div>
+        
+        <div>
+            <label for="datetime">วันที่ต้องการปล่อยเช่า:</label>
+            <input  type="date" id="datetime" name="datetime" class="form-textarea mt-3 bg-gray-300">
+        </div>
+
+        <div>
+            <label for="datetime">สิ้นสุดวันปล่อยเช่า:</label>
+            <input  type="date" id="datetime" name="lastdate" class="form-textarea mt-3 bg-gray-300">
         </div>
     </div>
     

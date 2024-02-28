@@ -14,26 +14,42 @@ def Location(req):
 
 def searches(req):
     form = Search1()
-    if req.method == 'GET':
-        form = Search1(req.GET)
+    if req.method == 'POST':
+        form = Search1(req.POST)
         if form.is_valid():
             search = form.cleaned_data['search']
-            show_product = Course.objects.filter(name__icontains=search)
+            if search is not None:
+                show_product = AllProduct.objects.filter(product_location__icontains=search) or AllProduct.objects.filter(product_name__icontains=search)
+           
+            for i in show_product:
+                print(i)
         else:
-            show_product = []
+            show_product = AllProduct.objects.all()
     else:
         form = Search1()
-        show_product = []
-    return render(req,'show_product.html',{'show_product':show_product,'form':form})
+        # show_product = []
+    return render(req,'shop/show_product_search.html',{'show_product':show_product,'form':form})
 
 def advice_view(req):
     return render(req, 'shop/advice.html')
 
 
-def product(req):
-    allproduct = AllProduct.objects.all()
-    context = {'allproduct':allproduct}
-    return render(req, 'shop/show_product.html',context)
+# def product(req):
+#     allproduct = AllProduct.objects.all()
+#     context = {'allproduct':allproduct}
+#     return render(req, 'shop/show_product.html',context)
+
+def product(request):
+    if request.method == 'POST':
+        search_query = request.POST.get('search_query')
+        # กรองข้อมูลตามคำค้นหา
+        allproduct = AllProduct.objects.filter(product_name__icontains=search_query)
+    else:
+        # ถ้าไม่มีการส่งคำค้นหามา
+        allproduct = AllProduct.objects.all()
+
+    context = {'allproduct': allproduct}
+    return render(request, 'shop/show_product.html', context)
 
 @login_required
 def Showdetall_product(req,product_id):
@@ -102,3 +118,5 @@ def cart(req):
     context = {'Cart':Cart}
     return render(req,'shop/cart.html',context)
 
+def buy_product(req):
+    return render(req, 'shop/buy_product.html')

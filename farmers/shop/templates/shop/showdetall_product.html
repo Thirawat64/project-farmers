@@ -16,8 +16,8 @@
         <div class="w-4/4">
             <div class="mb-4">
                 <h3 class="text-lg font-semibold">ชื่อ: {{ product.product_name }}</h3>
-                <p>ขนาดอุปกรณ์: {{ product.product_sproductze }}</p>
-                <p>รายละเอียดอุปกรณ์: {{ i.product_detail }}</p>
+                <p>ขนาดอุปกรณ์: {{ product.product_size }}</p>
+                <p>รายละเอียดอุปกรณ์: {{ product.product_detail }}</p>
             </div>
 
             <div class="mb-4">
@@ -27,6 +27,14 @@
 
             <div class="mb-4">
                 <p>สถานะอุปกรณ์: {{ product.product_status }}</p>
+            </div>
+
+            <div class="mb-4">
+                <p>วันที่ต้องการปล่อยเช่า: {{ product.datetime }}</p>
+            </div>
+
+            <div class="mb-4">
+                <p>สิ้นสุดวันปล่อยเช่า: {{ product.lastdate }}</p>
             </div>
 
             <div>
