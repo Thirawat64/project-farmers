@@ -6,5 +6,5 @@ admin.site.register(AllProduct)
 admin.site.register(Status)
 admin.site.register(Cart)
 admin.site.register(CartItem)
-admin.site.register(sell_buy)
+admin.site.register(Sell_Buy)
 # Register your models here.

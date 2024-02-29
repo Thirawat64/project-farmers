@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404,render,redirect,HttpResponseRedirect
-from .models import *
+from .models import * 
 from .forms import *
 from django.urls import reverse
 from django.contrib import messages
@@ -58,10 +58,10 @@ def Showdetall_product(req,product_id):
     return render(req, 'shop/showdetall_product.html',context)
 
 def Buy_product(req):
-    return render(req, 'shop/buy_product.html')
+    buy_ = Sell_Buy.objects.all()
+    return render(req, 'shop/buy_product.html',{'sell_buy':buy_})
 
 @login_required
-
 def Sell_product(req):
     status = Status.objects.all()
     form = UploadForm()
@@ -97,6 +97,11 @@ def delete(req, id):
     CartItem.objects.get(pk=id).delete()
     return redirect('cart')
 
+def delete_datas(req, id):
+    print(id)
+    Sell_Buy.objects.get(pk=id).delete()
+    return redirect('buy_product')
+
 def add_to_cart(req, product_id):
     product = AllProduct.objects.get(pk=product_id)  # ดึงสินค้าจากฐานข้อมูลด้วย ID
     cart = Cart.objects.get(user=req.user)
@@ -118,5 +123,11 @@ def cart(req):
     context = {'Cart':Cart}
     return render(req,'shop/cart.html',context)
 
-def buy_product(req):
-    return render(req, 'shop/buy_product.html')
+def add_sell_buy(req,id):
+    product = AllProduct.objects.get(pk=id)
+    data = Sell_Buy.objects.create(
+        user = req.user,
+        product = product,
+    )
+    data.save()
+    return redirect('buy_product')

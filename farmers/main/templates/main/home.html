@@ -7,8 +7,7 @@
   <meta name="author" content="David Grzyb">
   <meta name="description" content="">
   <!-- Tailwind -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <title>Document</title>
 
@@ -48,10 +47,21 @@
 <body class="bg-gray-100 font-family-karla flex"
   style="background-image: url('https://cdn.pixabay.com/photo/2019/04/29/07/46/rice-cultivation-4165415_1280.jpg'); background-size: cover; background-position: center;">
 
+  
+
   <aside class="relative bg-green-500 h-screen w-64 hidden sm:block shadow-xl">
     <div class="p-6">
+
+      <div class="flex lg:flex-1  ">
+        <a href="{% url 'home' %}" class="">
+          <span class="sr-only">Your Company</span>
+          <img class="h-16 w-auto rounded-full" src="https://github.com/Thirawat64/project-farmers/blob/thirawat/farmers/static/logo.jpg?raw=true" alt="">
+        </a>
+      </div>
+
       <a class="text-white text-3xl font-semibold uppercase hover:text-gray-300">
-        <i class="fa-solid fa-wheat-awn"></i>Farmer Support</a>
+        <i class="fa-solid fa-wheat-awn"></i>Farmer Support
+      </a>
 
 
       <div class="mx-auto max-w-7xl px-6 lg:px-8">

@@ -54,19 +54,10 @@ class CartItem(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2,null=True,blank=True)
 
 
-class sell_buy(models.Model):
+class Sell_Buy(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,null=True,blank=True)
     product = models.ForeignKey(AllProduct, on_delete=models.CASCADE,null=True,blank=True)
 
     
-    # price = models.DecimalField(max_digits=10, decimal_places=2)
-
-    def __str__(self):
-        return f'{self.user} x {self.product.product_name} เจ้าของ {self.product.user}'
-
-    # def subtotal(self):
-    #     return self.quantity * self.price
 
 
-''' for i in sell
-{{ i. product.pr}} '''
