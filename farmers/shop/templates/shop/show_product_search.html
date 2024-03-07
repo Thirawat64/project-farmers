@@ -6,7 +6,7 @@
 <div class="">
     <div class="grid grid-cols-3">
         <div class=""></div>
-        <div class="flex justify-center">
+        <div class="flex justify-center mt-5">
             <form action="{% url 'search' %}" method="post" class="flex max-w-sm">
                 {% csrf_token %}
                 <input type="text" name="search" placeholder="Search..."
@@ -15,7 +15,7 @@
                     class="bg-green-600 hover:bg-green-800 px-4 py-2 rounded-r-md text-white focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-green-700">ค้นหา</button>
             </form>
         </div>
-        <div class=" flex justify-end mx-7">
+        <div class=" flex justify-end mx-7 mt-5">
             <a href="{% url 'cart' %}">
                 <i class="fa-solid fa-cart-plus text-3xl"></i>
             </a>

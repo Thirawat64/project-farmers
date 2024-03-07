@@ -33,7 +33,8 @@ class AllProduct(models.Model):
     image = models.ImageField(upload_to='Parcel', default='broken_image.png',null=True,blank=True)
     datetime = models.DateField(null=True,blank=True)
     lastdate = models.DateField(null=True,blank=True)
-   
+    quantity = models.PositiveIntegerField(default=1)
+
 
     def __str__(self) -> str:
         return f'Product {self.product_name}'

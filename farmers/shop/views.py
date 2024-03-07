@@ -104,7 +104,7 @@ def delete_datas(req, id):
 
 def add_to_cart(req, product_id):
     product = AllProduct.objects.get(pk=product_id)  # ดึงสินค้าจากฐานข้อมูลด้วย ID
-    cart = Cart.objects.get(user=req.user)
+    cart = Cart.objects.get(user=req.user.is_authenticated)
     
     cart_item = CartItem.objects.filter(cart=cart, product=product ,user=req.user)
     if cart_item:
@@ -130,4 +130,10 @@ def add_sell_buy(req,id):
         product = product,
     )
     data.save()
-    return redirect('buy_product')
+    product.quantity -= 1
+    product.save()
+    context = {
+        'product':product,
+    }
+    return render(req, 'shop/Complete_buyproduct.html',context)
+
